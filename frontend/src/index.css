@@ -1,0 +1,11 @@
+@import url("./components/App.css");
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
