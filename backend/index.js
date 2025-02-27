@@ -13,6 +13,7 @@ app.use(cors());
 app.get("/api/todo/get", (req, res) => {
   const query = db.prepare("SELECT * FROM Todos");
   const todos = query.all();
+  console.log(todos);
   res.json(todos);
 });
 

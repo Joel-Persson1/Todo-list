@@ -5,13 +5,20 @@ export function StartView() {
   const [todos, setTodos] = useState(null);
 
   const getAllTodos = async () => {
-    const rawData = await fetch("http://localhost:3000/api/todo/get");
-    const data = rawData.json();
-    return data;
+    try {
+      const rawData = await fetch("http://localhost:3000/api/todo/get");
+      const data = await rawData.json();
+
+      setTodos(data);
+    } catch (error) {
+      console.error("Failed to fetch todos:", error);
+    }
   };
 
   const handleDelete = async (id) => {
     try {
+      setTodos((oldTodos) => oldTodos.filter((todo) => todo.todoId !== id));
+
       const result = await fetch(
         `http://localhost:3000/api/todo/delete/${id}`,
         {
@@ -26,8 +33,6 @@ export function StartView() {
         throw new Error("Failed to delete todo");
       }
 
-      setTodos(null);
-
       console.log("Todo deleted successfully");
     } catch (error) {
       console.error("Delete went wrong:", error);
@@ -35,8 +40,8 @@ export function StartView() {
   };
 
   useEffect(() => {
-    getAllTodos().then((data) => setTodos(data));
-  }, [todos]);
+    getAllTodos();
+  }, []);
 
   if (todos === null) {
     return <h1>Wait</h1>;

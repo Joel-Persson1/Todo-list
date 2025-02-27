@@ -8,34 +8,35 @@ export function Todo({ todo, onDelete }) {
     setIsCompleted((isCompleted) => !isCompleted);
   };
 
-  useEffect(() => {
-    console.log("Updating todo with ID:", todo?.todoId);
-
-    const updateTodo = async () => {
-      if (!todo?.todoId) return;
-      try {
-        const response = await fetch(
-          `http://localhost:3000/api/todo/update/${todo.todoId}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ completed: isCompleted }),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to delete todo");
+  const updateTodo = async () => {
+    if (!todo?.todoId) return;
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/todo/update/${todo.todoId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ completed: isCompleted }),
         }
+      );
 
-        console.log("Todo updated successfully");
-      } catch (error) {
-        console.error("Error updating todo:", error);
+      if (!response.ok) {
+        throw new Error("Failed to delete todo");
       }
-    };
+
+      console.log("Todo updated successfully");
+    } catch (error) {
+      console.error("Error updating todo:", error);
+    }
+  };
+
+  useEffect(() => {
+    console.log(isCompleted);
+    console.log("Updating todo with ID:", todo?.todoId);
     updateTodo();
-  }, [isCompleted, todo.todoId]);
+  }, [isCompleted]);
 
   return (
     <div>
