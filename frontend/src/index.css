@@ -1,4 +1,8 @@
 @import url("./components/App.css");
+@import url("./components/Todo.css");
+@import url("./views/StartView.css");
+@import url("./components/Navbar.css");
+@import url("./views/addNewTodo.css");
 
 * {
   box-sizing: border-box;
@@ -8,4 +12,11 @@
 
 .completed {
   text-decoration: line-through;
+}
+ion-icon {
+  font-size: 24px;
+}
+
+button {
+  cursor: pointer;
 }

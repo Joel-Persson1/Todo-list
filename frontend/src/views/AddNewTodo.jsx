@@ -31,10 +31,18 @@ export function AddNewTodo() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" ref={header} />
-      <input type="text" ref={description} />
-      <button type="submit">Submit</button>
-    </form>
+    <div className="form-container">
+      <form className="form" onSubmit={handleSubmit}>
+        <div>
+          <label>Enter your todo title</label>
+          <input type="text" ref={header} />
+        </div>
+        <div>
+          <label>Enter your todo description</label>
+          <input type="text" ref={description} />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 }

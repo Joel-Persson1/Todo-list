@@ -1,0 +1,66 @@
+.todo-box {
+  background-color: #ffe066;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  position: relative;
+}
+
+.buttons-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-btn {
+  background-color: transparent;
+  border: none;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: 2rem;
+  padding: 0.1rem;
+  background-color: green;
+  border: 0.25rem solid green;
+  border-radius: 0.5rem 0rem 0.5rem 0rem;
+  transform: translate(-0.3rem, -0.3rem);
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  clip-path: polygon(46% 62%, 100% 0%, 45% 97%, 11% 36%);
+  transform: scale(0);
+  background-color: white;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.todo-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgb(17, 17, 17);
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.todo-title {
+  font-size: 1.6rem;
+}
+.todo-description {
+  font-size: 1.2rem;
+}

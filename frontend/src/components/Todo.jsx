@@ -39,15 +39,28 @@ export function Todo({ todo, onDelete }) {
   }, [isCompleted]);
 
   return (
-    <div>
-      <h3>{todo.todoName}</h3>
-      <p className={isCompleted ? "completed" : ""}>{todo.todoDescription}</p>
-      <input
-        checked={isCompleted ? true : false}
-        onChange={handleCompleted}
-        type="checkbox"
-      />
-      <button onClick={() => onDelete(todo.todoId)}>DELETE</button>
-    </div>
+    <article className="todo-box">
+      <div className="buttons-div">
+        <input
+          className="checkbox"
+          checked={isCompleted ? true : false}
+          onChange={handleCompleted}
+          type="checkbox"
+        />
+        <button className="delete-btn" onClick={() => onDelete(todo.todoId)}>
+          <ion-icon name="trash-outline"></ion-icon>
+        </button>
+      </div>
+      <div className="todo-info">
+        <h3 className="todo-title">{todo.todoName}</h3>{" "}
+        <p className={`todo-description ${isCompleted ? "completed" : ""}`}>
+          {todo.todoDescription}
+        </p>
+        <button className="edit-btn">
+          {" "}
+          <ion-icon name="create-outline"></ion-icon>
+        </button>
+      </div>
+    </article>
   );
 }

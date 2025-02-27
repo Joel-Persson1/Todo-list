@@ -48,7 +48,7 @@ export function StartView() {
   }
 
   return (
-    <main>
+    <main className="grid">
       {todos.map((todo) => (
         <Todo key={todo.todoId} todo={todo} onDelete={handleDelete} />
       ))}
